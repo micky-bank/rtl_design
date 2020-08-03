@@ -17,7 +17,6 @@ module Dual_Port_SRAM #(
 )
 (
     input                                  I_Clk,
-    input                                  I_Reset,
 
     input                                  I_WrEn,
     input           [ADDR_WIDTH-1 : 0]     I_WrAddr,
