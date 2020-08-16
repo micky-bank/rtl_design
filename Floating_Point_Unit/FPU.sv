@@ -5,18 +5,18 @@ Description:
 
 Creation Date: 16-Aug-20 11:24:42 AM
 
-Last Modified: 16-Aug-20 11:42:46 AM
+Last Modified: 16-Aug-20 5:57:55 PM
 
 Author: github.com/micky-bank
 **********************************************************************/
 
 module FPU #(
-    parameter               PRECISION_WIDTH = 32,
+    parameter               PRECISION       = 32,
     localparam              DATA_WIDTH      = 32
 )
 (
     input                                       I_Clk,
-    input                                       I_Reset,
+    input                                       I_nReset,
 
     input                                       I_Opearnd1_Sign,
     input       [DATA_WIDTH-1 : 0]              I_Operand1_Int,
@@ -47,7 +47,7 @@ U_Normalize_Op1 (
     .I_nReset                           ,
 
     .I_Operand_Sign                     (I_Operand1_Sign),
-    .I_Operand_Int                      (I_Opearnd1_Int),
+    .I_Operand_Int                      (I_Operand1_Int),
     .I_Operand_Fract                    (I_Operand1_Fract),
 
     .O_Op                               (PO_Op1_Norm),
@@ -63,7 +63,7 @@ U_Normalize_Op2 (
     .I_nReset                           ,
 
     .I_Operand_Sign                     (I_Operand2_Sign),
-    .I_Operand_Int                      (I_Opearnd2_Int),
+    .I_Operand_Int                      (I_Operand2_Int),
     .I_Operand_Fract                    (I_Operand2_Fract),
 
     .O_Op                               (PO_Op2_Norm),
