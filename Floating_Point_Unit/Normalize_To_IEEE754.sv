@@ -7,7 +7,7 @@ Author: github.com/micky-bank
 
 Creation Date: Saturday 15 August 2020 05:27:41 PM
 
-Last Modified:
+Last Modified: 16-Aug-20 11:38:05 AM
 **********************************************************************/
 
 module Normalize_To_IEEE754 #(
@@ -22,7 +22,8 @@ module Normalize_To_IEEE754 #(
     input               [DATA_WIDTH-1 : 0]          I_Operand_Int,
     input               [DATA_WIDTH-1 : 0]          I_Operand_Fract,
 
-    output   logic      [PRECISION-1 : 0]           O_Operand
+    output   logic      [PRECISION-1 : 0]           O_Op,
+    output   logic                                  O_Op_Is_Zero
 );
 
 logic           [DATA_WIDTH-1 : 0]                  Int_1st_1_From_MSB_C;
@@ -387,6 +388,7 @@ always_comb begin
     endcase
 end
 
-assign O_Operand = {I_Operand_Sign, Exponent_Q, Mantissa_Q};
+assign O_Op         = {I_Operand_Sign, Exponent_Q, Mantissa_Q};
+assign O_Op_Is_Zero = Operand_Is_Zero_Q;
 
 endmodule : Normalize_To_IEEE754
