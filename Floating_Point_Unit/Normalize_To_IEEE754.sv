@@ -7,7 +7,7 @@ Author: github.com/micky-bank
 
 Creation Date: Saturday 15 August 2020 05:27:41 PM
 
-Last Modified: 16-Aug-20 6:19:31 PM
+Last Modified: Sunday 23 August 2020 03:44:49 PM
 **********************************************************************/
 
 module Normalize_To_IEEE754 #(
@@ -15,8 +15,8 @@ module Normalize_To_IEEE754 #(
     parameter               DATA_WIDTH         = 32
 )
 (
-    input                                           I_Clk,
-    input                                           I_nReset,
+//    input                                           I_Clk,
+//    input                                           I_nReset,
 
     input                                           I_Operand_Sign,
     input               [DATA_WIDTH-1 : 0]          I_Operand_Int,
@@ -32,7 +32,6 @@ logic                                               Operand_Is_Zero_Q;
 logic           [ 7 : 0]                            Exponent_Q;
 logic           [22 : 0]                            Mantissa_Q;
 
-// always_comb begin
 for (genvar i = 0; i<DATA_WIDTH; i++) begin
     if (i == DATA_WIDTH-1) begin
         assign Int_1st_1_From_MSB_C [DATA_WIDTH-1] = (I_Operand_Int [DATA_WIDTH-1] == 1'b1) ? 1'b1 : 1'b0;
